@@ -1,0 +1,39 @@
+﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using System;
+using System.Threading.Tasks;
+
+namespace Microsoft.AspNetCore.Mvc.ModelBinding {
+    public class JsonModelBinder : IModelBinder {
+        private readonly MvcJsonOptions _options;
+
+        public JsonModelBinder(IOptions<MvcJsonOptions> options) {
+            _options = options.Value;
+        }
+
+        public Task BindModelAsync(ModelBindingContext bindingContext) {
+            if (bindingContext == null) {
+                throw new ArgumentNullException(nameof(bindingContext));
+            }
+
+            // Test if a value is received
+            var valueProviderResult = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
+            if (valueProviderResult != ValueProviderResult.None) {
+                bindingContext.ModelState.SetModelValue(bindingContext.ModelName, valueProviderResult);
+
+                // Deserialize from string
+                string serialized = valueProviderResult.FirstValue;
+
+                // Use custom json options defined in startup if available
+                object deserialized = _options?.SerializerSettings == null ?
+                    JsonConvert.DeserializeObject(serialized, bindingContext.ModelType) :
+                    JsonConvert.DeserializeObject(serialized, bindingContext.ModelType, _options.SerializerSettings);
+
+                // Set succesful binding result
+                bindingContext.Result = ModelBindingResult.Success(deserialized);
+                return Task.CompletedTask;
+            }
+            return Task.CompletedTask;
+        }
+    }
+}
