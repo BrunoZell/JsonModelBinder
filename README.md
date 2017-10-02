@@ -1,6 +1,8 @@
 # JsonModelBinder
 This library provides an explicit json model binder to allow json serialized parts in a multipart-formdata request of a .Net-Core controller action.
 
+    Install-Package JsonModelBinder
+
 Now you can, for example, have a file upload action with additional data about the upload as a json structure. Then your controller upload action would look like this:
 
 ```c#
