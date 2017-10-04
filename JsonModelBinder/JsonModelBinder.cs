@@ -31,9 +31,17 @@ namespace Microsoft.AspNetCore.Mvc.ModelBinding {
 
                 // Set succesful binding result
                 bindingContext.Result = ModelBindingResult.Success(deserialized);
+#if NET451
+                return Task.FromResult(0);
+#else
                 return Task.CompletedTask;
+#endif
             }
+#if NET451
+            return Task.FromResult(0);
+#else
             return Task.CompletedTask;
+#endif
         }
     }
 }

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFrameworks>net451;netcoreapp1.0;netstandard1.6</TargetFrameworks>
     <Authors>Bruno Zell</Authors>
     <Company />
     <Product />
@@ -12,6 +12,10 @@
     <PackageProjectUrl>https://github.com/TheInsaneBro/JsonModelBinder</PackageProjectUrl>
     <PackageTags>json serialization net-core multipart form-data model binder mvc</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Now available for .Net Core 1.0, .Net Framework 4.5.1 and .Net Standard 1.6</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
