@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net451;netcoreapp1.0;netstandard1.6</TargetFrameworks>
+    <RootNamespace>BrunoZell.ModelBinding</RootNamespace>
     <Authors>Bruno Zell</Authors>
     <Company />
     <Product />
