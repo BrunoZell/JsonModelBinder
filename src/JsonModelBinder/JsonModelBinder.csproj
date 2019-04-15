@@ -1,16 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net451;netcoreapp1.0;netstandard1.6</TargetFrameworks>
     <RootNamespace>BrunoZell.ModelBinding</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <Authors>Bruno Zell</Authors>
     <Company />
     <Product />
     <Description>An explicit json model binder to allow json serialized parts in for example a multipart-formdata request of a .Net-Core controller action.</Description>
     <Copyright>Bruno Zell</Copyright>
-    <PackageLicenseUrl>https://github.com/TheInsaneBro/JsonModelBinder/blob/master/LICENSE</PackageLicenseUrl>
-    <RepositoryUrl>https://github.com/TheInsaneBro/JsonModelBinder</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/TheInsaneBro/JsonModelBinder</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/BrunoZell/JsonModelBinder/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/BrunoZell/JsonModelBinder</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/BrunoZell/JsonModelBinder</PackageProjectUrl>
     <PackageTags>json serialization net-core multipart form-data model binder mvc</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
