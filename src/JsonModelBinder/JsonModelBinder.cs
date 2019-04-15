@@ -5,15 +5,17 @@ using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
-namespace BrunoZell.ModelBinding {
-    public class JsonModelBinder : IModelBinder {
+namespace BrunoZell.ModelBinding
+{
+    public class JsonModelBinder : IModelBinder
+    {
         private readonly MvcJsonOptions _options;
 
-        public JsonModelBinder(IOptions<MvcJsonOptions> options) {
+        public JsonModelBinder(IOptions<MvcJsonOptions> options) =>
             _options = options.Value;
-        }
 
-        public Task BindModelAsync(ModelBindingContext bindingContext) {
+        public Task BindModelAsync(ModelBindingContext bindingContext)
+        {
             if (bindingContext == null) {
                 throw new ArgumentNullException(nameof(bindingContext));
             }
@@ -31,7 +33,7 @@ namespace BrunoZell.ModelBinding {
                     JsonConvert.DeserializeObject(serialized, bindingContext.ModelType) :
                     JsonConvert.DeserializeObject(serialized, bindingContext.ModelType, _options.SerializerSettings);
 
-                // Set succesful binding result
+                // Set successful binding result
                 bindingContext.Result = ModelBindingResult.Success(deserialized);
 #if NET451
                 return Task.FromResult(0);
