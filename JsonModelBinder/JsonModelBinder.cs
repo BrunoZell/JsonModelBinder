@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
-namespace Microsoft.AspNetCore.Mvc.ModelBinding {
+namespace BrunoZell.ModelBinding {
     public class JsonModelBinder : IModelBinder {
         private readonly MvcJsonOptions _options;
 
