@@ -5,7 +5,7 @@
     <Product />
     <Description>An explicit json model binder to allow json serialized parts in for example a multipart-formdata request of a .Net-Core controller action.</Description>
     <Copyright>Bruno Zell</Copyright>
-    <PackageLicenseUrl>https://github.com/BrunoZell/JsonModelBinder/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicense>MIT</PackageLicense>
     <RepositoryUrl>https://github.com/BrunoZell/JsonModelBinder</RepositoryUrl>
     <PackageProjectUrl>https://github.com/BrunoZell/JsonModelBinder</PackageProjectUrl>
     <PackageTags>json serialization net-core multipart form-data model binder mvc</PackageTags>
