@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
@@ -6,11 +8,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-
-#if NETCOREAPP1_0 || NETCOREAPP2_0
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-#endif
 
 namespace BrunoZell.ModelBinding
 {
@@ -20,6 +17,13 @@ namespace BrunoZell.ModelBinding
         private readonly MvcJsonOptions _options;
 
         public JsonModelBinder(IOptions<MvcJsonOptions> options) =>
+            _options = options.Value;
+#endif
+
+#if NETCOREAPP3_0
+        private readonly MvcNewtonsoftJsonOptions _options;
+
+        public JsonModelBinder(IOptions<MvcNewtonsoftJsonOptions> options) =>
             _options = options.Value;
 #endif
 
@@ -37,13 +41,9 @@ namespace BrunoZell.ModelBinding
                 string serialized = valueProviderResult.FirstValue;
 
                 // Use custom json options defined in startup if available
-#if NETCOREAPP1_0 || NETCOREAPP2_0
                 object deserialized = _options?.SerializerSettings == null ?
                     JsonConvert.DeserializeObject(serialized, bindingContext.ModelType) :
                     JsonConvert.DeserializeObject(serialized, bindingContext.ModelType, _options.SerializerSettings);
-#else
-                object deserialized = JsonConvert.DeserializeObject(serialized, bindingContext.ModelType);
-#endif
 
                 // DataAnnotation Validation. Validate Properties and Fields.
                 var validationResultProps = from property in TypeDescriptor.GetProperties(deserialized).Cast<PropertyDescriptor>()
