@@ -5,22 +5,7 @@
     <RootNamespace>BrunoZell.ModelBinding</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <Authors>Bruno Zell</Authors>
-    <Company />
-    <Product />
-    <Description>An explicit json model binder to allow json serialized parts in for example a multipart-formdata request of a .Net-Core controller action.</Description>
-    <Copyright>Bruno Zell</Copyright>
-    <PackageLicenseUrl>https://github.com/BrunoZell/JsonModelBinder/blob/master/LICENSE</PackageLicenseUrl>
-    <RepositoryUrl>https://github.com/BrunoZell/JsonModelBinder</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/BrunoZell/JsonModelBinder</PackageProjectUrl>
-    <PackageTags>json serialization net-core multipart form-data model binder mvc</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.1</Version>
-    <PackageReleaseNotes>Now available for .Net Core 1.0, .Net Framework 4.5.1 and .Net Standard 1.6</PackageReleaseNotes>
-  </PropertyGroup>
+  <Import Project="package.props"/>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
