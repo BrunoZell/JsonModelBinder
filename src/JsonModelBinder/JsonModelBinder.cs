@@ -42,6 +42,12 @@ namespace BrunoZell.ModelBinding
             // Get the json serialized value as string
             string serialized = valueProviderResult.FirstValue;
 
+            // Return a successful binding for empty strings or nulls
+            if (String.IsNullOrEmpty(serialized)) {
+                bindingContext.Result = ModelBindingResult.Success(null);
+                return Task.CompletedTask;
+            }
+
             // Deserialize json string using custom json options defined in startup, if available
             object deserialized = _options?.SerializerSettings is null ?
                 JsonConvert.DeserializeObject(serialized, bindingContext.ModelType) :
