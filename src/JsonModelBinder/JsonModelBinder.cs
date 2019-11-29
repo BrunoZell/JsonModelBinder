@@ -71,7 +71,7 @@ namespace BrunoZell.ModelBinding
                                          };
 
             // Add the validation results to the model state
-            var errors = validationResultFields.Concat(validationResultFields);
+            var errors = validationResultFields.Concat(validationResultProps);
             foreach (var validationResultItem in errors)
                 bindingContext.ModelState.AddModelError(validationResultItem.Member, validationResultItem.ErrorMessage);
 
